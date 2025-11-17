@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    /* Cores do Tema Cinema */
+    --red: #e50914;    /* Vermelho vibrante */
+    --white: #ffffff;
+    --dark: #141414;   /* Preto quase total */
+    --gray: #f5f5f5;   /* Fundo levemente cinza para contraste */
+}
+
+body {
+    color: var(--dark);
+    background: var(--gray);
+}
+
+/* === Header & Navegação === */
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 40px;
+    box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.1);
+    width: 100%;
+    background: var(--white);
+    transition: all 0.5s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Garante que o menu fique sobre tudo */
+}
+
+.navigation .logo {
+    color: var(--dark);
+    font-size: 1.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.logo span {
+    color: var(--red); /* Destaque no "Magic" */
+}
+
+.navigation ul {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.navigation ul li a {
+    color: var(--dark);
+    font-size: 17px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.navigation ul li a:hover {
+    color: var(--red);
+}
+
+.navigation i {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--dark);
+    transition: color 0.3s;
+}
+
+.navigation i:hover {
+    color: var(--red);
+}
+
+/* === Menu Hambúrguer === */
+.menu {
+    cursor: pointer;
+    display: none; /* Escondido no Desktop */
+}
+
+.menu .bar {
+    display: block;
+    width: 28px;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--dark);
+    margin: 5px auto;
+    transition: all 0.3s;
+}
+
+.menu .bar:nth-child(1),
+.menu .bar:nth-child(3) {
+    background: var(--red);
+}
+
+/* === Seção Home (Hero) === */
+.home {
+    width: 100%;
+    min-height: 100vh; /* Garante altura total da tela */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 10% 0; /* 80px topo para compensar o menu fixo */
+}
+
+.home-text {
+    max-width: 37rem;
+}
+
+.home-text .text-h4 {
+    font-size: 1.5rem;
+    color: var(--red);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.home-text .text-h1 {
+    font-size: 3.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: var(--dark);
+}
+
+.home-text p {
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.home-btn {
+    padding: 15px 45px;
+    background: var(--red);
+    color: var(--white);
+    border-radius: 30px; /* Botão mais arredondado */
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+}
+
+.home-btn:hover {
+    background: #b20710;
+    transform: translateY(-3px);
+}
+
+.home-img img {
+    width: 100%;
+    max-width: 500px; /* Limita o tamanho da imagem */
+    height: auto;
+    animation: float 3s ease-in-out infinite; /* Pequena animação opcional */
+}
+
+/* Animação suave na imagem */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* === Responsividade (Mobile) === */
+@media (max-width: 785px) {
+    .navigation {
+        padding: 18px 20px;
+    }
+
+    .menu {
+        display: block; /* Mostra o hambúrguer */
+    }
+
+    /* Animação do Hambúrguer virando X */
+    .menu.ativo .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu.ativo .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu.ativo .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        width: 100%;
+        height: calc(100vh - 70px); /* Altura ajustada */
+        flex-direction: column;
+        background: var(--white);
+        justify-content: center; /* Centraliza os itens */
+        gap: 2rem;
+        transition: 0.4s;
+        box-shadow: -2px 5px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.ativo {
+        right: 0;
+    }
+
+    .nav-item {
+        margin: 0;
+    }
+
+    .nav-item a {
+        font-size: 1.5rem; /* Aumenta fonte no mobile */
+    }
+
+    /* Ajustes da Home no Mobile */
+    .home {
+        padding: 100px 5%;
+        flex-direction: column-reverse; /* Imagem em cima, texto embaixo */
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .home-text .text-h1 {
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+    
+    .home-img img {
+        max-width: 80%;
+    }
+}
+
+.home-img img {
+    width: 100%;
+    max-width: 500px; /* Limita o tamanho da imagem */
+    height: auto;
+    animation: float 3s ease-in-out infinite; /* Pequena animação opcional */
+
+    /* === NOVAS LINHAS AQUI === */
+    border: 5px solid rgba(255, 255, 255, 0.8); /* Borda branca levemente transparente */
+    border-radius: 10px; /* Cantos levemente arredondados */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidade */
+    padding: 5px; /* Espaçamento interno antes da borda */
+    background-color: #fff; /* Fundo branco para a imagem */
+}
+
+/* Para ajustar no mobile, caso a sombra e borda fiquem muito grandes */
+@media (max-width: 785px) {
+    .home-img img {
+        border: 3px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        padding: 3px;
+    }
+}
